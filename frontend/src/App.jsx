@@ -112,7 +112,7 @@ function App() {
         <footer className="bg-purple-800 text-white text-center py-4 mt-8">
           <div className="overflow-hidden">
             <div className="whitespace-nowrap animate-marquee text-lg font-bold tracking-wide">
-              PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA •
+              PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • 
             </div>
           </div>
           <p className="mt-2 text-sm">
