@@ -7,6 +7,9 @@ import Estatisticas from "./pages/Estatisticas";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
+// importa o logo de src/assets
+import logo from "./assets/image.png";
+
 function Navbar() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -47,7 +50,7 @@ function App() {
           <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img src="/logo.png" alt="Passa a Bola" className="w-12 h-12" />
+              <img src={logo} alt="Passa a Bola" className="w-12 h-12" />
               <h1 className="text-3xl font-extrabold text-purple-800">
                 PASSA A BOLA
               </h1>
