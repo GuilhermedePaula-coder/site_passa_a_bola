@@ -1,0 +1,4 @@
+[
+  { "id": 1, "nome": "Maria", "posicao": "Atacante", "time": "Time 1", "jogos": 3, "gols": 4, "assistencias": 1, "amarelo": 0, "vermelho": 0 },
+  { "id": 2, "nome": "Ana", "posicao": "Meio-campo", "time": "Time 2", "jogos": 3, "gols": 1, "assistencias": 3, "amarelo": 1, "vermelho": 0 }
+]

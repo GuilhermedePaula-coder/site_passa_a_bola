@@ -1,0 +1,4 @@
+[
+  { "id": 1, "data": "2025-09-01", "horario": "14:00", "time1": "Time 1", "time2": "Time 2", "status": "Finalizado" },
+  { "id": 2, "data": "2025-09-02", "horario": "16:00", "time1": "Time 3", "time2": "Time 4", "status": "Agendado" }
+]

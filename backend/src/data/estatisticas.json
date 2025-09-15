@@ -1,0 +1,15 @@
+{
+  "gols": 28,
+  "assistencias": 15,
+  "defesas": 12,
+  "dribles": 34,
+  "cartoes": {
+    "amarelo": 5,
+    "vermelho": 2
+  },
+  "mvp": {
+    "nome": "Maria Silva",
+    "posicao": "Atacante",
+    "time": "Time 1"
+  }
+}
