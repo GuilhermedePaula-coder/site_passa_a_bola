@@ -6,36 +6,27 @@ function Jogos() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) return;
-
-    getJogos(token).then((data) => {
-      if (!data.error) setJogos(data);
-    });
+    if (token) getJogos(token).then(setJogos);
   }, []);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-green-600 mb-4">JOGOS</h1>
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="bg-purple-800 text-white">
-            <th className="p-2">Data</th>
-            <th className="p-2">Horário</th>
-            <th className="p-2">Jogo</th>
-            <th className="p-2">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jogos.map((j) => (
-            <tr key={j.id} className="bg-purple-600 text-white text-center">
-              <td className="p-2">{j.data}</td>
-              <td className="p-2">{j.horario}</td>
-              <td className="p-2">{j.time1} x {j.time2}</td>
-              <td className="p-2">{j.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="max-w-5xl mx-auto">
+      <h1 className="text-3xl font-bold text-purple-800 mb-6">Jogos</h1>
+      <div className="grid gap-4">
+        {jogos.map((j) => (
+          <div
+            key={j.id}
+            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
+          >
+            <p className="text-lg font-bold">
+              {j.time1} <span className="text-purple-600">vs</span> {j.time2}
+            </p>
+            <p className="text-sm text-gray-600">
+              {j.data} • {j.horario} • <span className="font-semibold">{j.status}</span>
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
