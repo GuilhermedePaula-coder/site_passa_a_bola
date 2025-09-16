@@ -1,4 +1,10 @@
 [
-  { "id": 1, "nome": "Maria", "posicao": "Atacante", "time": "Time 1", "jogos": 3, "gols": 4, "assistencias": 1, "amarelo": 0, "vermelho": 0 },
-  { "id": 2, "nome": "Ana", "posicao": "Meio-campo", "time": "Time 2", "jogos": 3, "gols": 1, "assistencias": 3, "amarelo": 1, "vermelho": 0 }
+  { "id": 1, "nome": "Amanda Gutierres", "posicao": "Atacante", "time": "Palmeiras", "jogos": 18, "gols": 17, "assistencias": 5, "amarelo": 1, "vermelho": 0 },
+  { "id": 2, "nome": "Paulina Gramaglia", "posicao": "Atacante", "time": "Red Bull Bragantino", "jogos": 18, "gols": 10, "assistencias": 4, "amarelo": 0, "vermelho": 0 },
+  { "id": 3, "nome": "Cristiane", "posicao": "Atacante", "time": "Flamengo", "jogos": 18, "gols": 9, "assistencias": 3, "amarelo": 2, "vermelho": 0 },
+  { "id": 4, "nome": "Jhonson", "posicao": "Meio-campo", "time": "Corinthians", "jogos": 18, "gols": 8, "assistencias": 7, "amarelo": 3, "vermelho": 0 },
+  { "id": 5, "nome": "Letícia Ferreira", "posicao": "Atacante", "time": "Cruzeiro", "jogos": 18, "gols": 7, "assistencias": 6, "amarelo": 1, "vermelho": 0 },
+  { "id": 6, "nome": "Giovana Crivelari", "posicao": "Atacante", "time": "São Paulo", "jogos": 18, "gols": 6, "assistencias": 4, "amarelo": 2, "vermelho": 0 },
+  { "id": 7, "nome": "Patrícia", "posicao": "Meio-campo", "time": "Internacional", "jogos": 18, "gols": 3, "assistencias": 8, "amarelo": 0, "vermelho": 0 },
+  { "id": 8, "nome": "Talita", "posicao": "Defesa", "time": "Bahia", "jogos": 18, "gols": 1, "assistencias": 5, "amarelo": 2, "vermelho": 0 }
 ]

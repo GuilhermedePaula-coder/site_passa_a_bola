@@ -1,15 +1,17 @@
 {
-  "gols": 28,
-  "assistencias": 15,
-  "defesas": 12,
-  "dribles": 34,
-  "cartoes": {
-    "amarelo": 5,
-    "vermelho": 2
+  "artilheira": {
+    "nome": "Amanda Gutierres",
+    "time": "Palmeiras",
+    "gols": 17
   },
-  "mvp": {
-    "nome": "Maria Silva",
-    "posicao": "Atacante",
-    "time": "Time 1"
+  "assistente": {
+    "nome": "Patrícia",
+    "time": "Internacional",
+    "assistencias": 8
+  },
+  "goleira": {
+    "nome": "Tainá",
+    "time": "Corinthians",
+    "defesas": 45
   }
 }
