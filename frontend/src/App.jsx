@@ -7,7 +7,7 @@ import Estatisticas from "./pages/Estatisticas";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
-// importa o logo de src/assets
+// importa o logo da pasta assets
 import logo from "./assets/image.png";
 
 function Navbar() {
@@ -15,20 +15,19 @@ function Navbar() {
   const token = localStorage.getItem("token");
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // remove o token
-    navigate("/login"); // redireciona pro login
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return (
     <nav className="flex space-x-6 text-green-600 font-bold text-lg">
-      <Link to="/">Home</Link>
-      <Link to="/jogos">Jogos</Link>
-      <Link to="/classificacao">Classificação</Link>
-      <Link to="/jogadoras">Jogadoras</Link>
-      <Link to="/estatisticas">Estatísticas</Link>
-
+      <Link to="/" className="hover:text-purple-700">Home</Link>
+      <Link to="/jogos" className="hover:text-purple-700">Jogos</Link>
+      <Link to="/classificacao" className="hover:text-purple-700">Classificação</Link>
+      <Link to="/jogadoras" className="hover:text-purple-700">Jogadoras</Link>
+      <Link to="/estatisticas" className="hover:text-purple-700">Estatísticas</Link>
       {!token ? (
-        <Link to="/login">Login</Link>
+        <Link to="/login" className="hover:text-purple-700">Login</Link>
       ) : (
         <button
           onClick={handleLogout}
@@ -44,19 +43,15 @@ function Navbar() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-white font-sans">
+      <div className="min-h-screen flex flex-col font-sans bg-gradient-to-br from-purple-50 via-white to-green-50">
         {/* Header */}
-        <header className="bg-white border-b-4 border-purple-800">
+        <header className="bg-white shadow-md border-b-4 border-purple-800 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="Passa a Bola" className="w-12 h-12" />
-              <h1 className="text-3xl font-extrabold text-purple-800">
-                PASSA A BOLA
-              </h1>
+            <div className="flex items-center space-x-3">
+              <img src={logo} alt="Passa a Bola" className="w-14 h-14 rounded-full shadow-lg" />
+              <h1 className="text-3xl font-extrabold text-purple-800 tracking-wide">PASSA A BOLA</h1>
             </div>
-
-            {/* Menu dinâmico */}
             <Navbar />
           </div>
         </header>
@@ -64,61 +59,23 @@ function App() {
         {/* Conteúdo */}
         <main className="flex-1 p-6">
           <Routes>
-            {/* Rota pública */}
             <Route path="/login" element={<Login />} />
-
-            {/* Rotas privadas */}
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <Home />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/jogos"
-              element={
-                <PrivateRoute>
-                  <Jogos />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/classificacao"
-              element={
-                <PrivateRoute>
-                  <Classificacao />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/jogadoras"
-              element={
-                <PrivateRoute>
-                  <Jogadoras />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/estatisticas"
-              element={
-                <PrivateRoute>
-                  <Estatisticas />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/jogos" element={<PrivateRoute><Jogos /></PrivateRoute>} />
+            <Route path="/classificacao" element={<PrivateRoute><Classificacao /></PrivateRoute>} />
+            <Route path="/jogadoras" element={<PrivateRoute><Jogadoras /></PrivateRoute>} />
+            <Route path="/estatisticas" element={<PrivateRoute><Estatisticas /></PrivateRoute>} />
           </Routes>
         </main>
 
         {/* Footer */}
-        <footer className="bg-purple-800 text-white text-center py-4 mt-8">
+        <footer className="bg-purple-800 text-white text-center py-6 mt-12 shadow-inner">
           <div className="overflow-hidden">
             <div className="whitespace-nowrap animate-marquee text-lg font-bold tracking-wide">
-              PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA • PASSA A BOLA 
+              ⚽ PASSA A BOLA • FUTEBOL FEMININO • CAMPEONATO BRASILEIRO • 2025 •
             </div>
           </div>
-          <p className="mt-2 text-sm">
+          <p className="mt-2 text-sm opacity-80">
             © 2025 Passa a Bola - Todos os direitos reservados.
           </p>
         </footer>
