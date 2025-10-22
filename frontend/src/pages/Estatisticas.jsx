@@ -1,67 +1,130 @@
+
 import { useEffect, useState } from "react";
 import { getEstatisticas } from "../api";
+import { FaFutbol, FaUserFriends, FaShieldAlt } from "react-icons/fa";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import Spinner from "../components/Spinner";
+import Modal from "../components/Modal";
 
-function Estatisticas() {
-  const [estatisticas, setEstatisticas] = useState(null);
+export default function Estatisticas() {
+  const [stats, setStats] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getEstatisticas(token).then((data) => {
-        setEstatisticas(data);
-      });
-    }
+    getEstatisticas().then(setStats).catch(() => setStats(null));
   }, []);
 
-  if (!estatisticas) {
-    return <p className="text-center text-gray-500">Carregando estatísticas...</p>;
-  }
+  if (stats === null)
+    return (
+      <div className="text-center p-10">
+        <Spinner />
+      </div>
+    );
+
+  const chartData = [
+    { name: stats.artilheira.nome, value: stats.artilheira.gols },
+    { name: stats.assistente.nome, value: stats.assistente.assistencias },
+    { name: stats.goleira.nome, value: stats.goleira.defesas },
+  ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-3xl font-extrabold text-purple-800 mb-8 text-center">
-        Estatísticas do Campeonato
-      </h1>
+    <div className="max-w-6xl mx-auto">
+      <h1 className="text-3xl font-bold text-purple-800 mb-6">Estatísticas</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Artilheira */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition">
-          <span className="text-5xl mb-4">⚽</span>
-          <h2 className="text-xl font-bold text-purple-700">Artilheira</h2>
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div
+          className="bg-white rounded-xl shadow p-6 text-center cursor-pointer hover:shadow-lg transition"
+          onClick={() => setSelected({ tipo: "Artilheira", ...stats.artilheira })}
+        >
+          <FaFutbol className="mx-auto text-4xl text-purple-600 mb-3" />
+          <h3 className="text-lg font-bold">Artilheira</h3>
           <p className="mt-2 text-gray-700">
-            <strong>{estatisticas.artilheira.nome}</strong> ({estatisticas.artilheira.time})
+            <strong>{stats.artilheira.nome}</strong>
           </p>
-          <span className="mt-2 text-lg font-semibold text-purple-800">
-            {estatisticas.artilheira.gols} gols
-          </span>
+          <p className="text-green-700 font-semibold mt-2">
+            {stats.artilheira.gols} gols
+          </p>
         </div>
 
-        {/* Assistente */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition">
-          <span className="text-5xl mb-4">🎯</span>
-          <h2 className="text-xl font-bold text-green-700">Assistências</h2>
+        <div
+          className="bg-white rounded-xl shadow p-6 text-center cursor-pointer hover:shadow-lg transition"
+          onClick={() => setSelected({ tipo: "Assistente", ...stats.assistente })}
+        >
+          <FaUserFriends className="mx-auto text-4xl text-green-600 mb-3" />
+          <h3 className="text-lg font-bold">Mais Assistências</h3>
           <p className="mt-2 text-gray-700">
-            <strong>{estatisticas.assistente.nome}</strong> ({estatisticas.assistente.time})
+            <strong>{stats.assistente.nome}</strong>
           </p>
-          <span className="mt-2 text-lg font-semibold text-green-800">
-            {estatisticas.assistente.assistencias} assistências
-          </span>
+          <p className="text-purple-700 font-semibold mt-2">
+            {stats.assistente.assistencias} assistências
+          </p>
         </div>
 
-        {/* Goleira */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition">
-          <span className="text-5xl mb-4">🧤</span>
-          <h2 className="text-xl font-bold text-blue-700">Goleira</h2>
+        <div
+          className="bg-white rounded-xl shadow p-6 text-center cursor-pointer hover:shadow-lg transition"
+          onClick={() => setSelected({ tipo: "Goleira", ...stats.goleira })}
+        >
+          <FaShieldAlt className="mx-auto text-4xl text-blue-600 mb-3" />
+          <h3 className="text-lg font-bold">Goleira com mais defesas</h3>
           <p className="mt-2 text-gray-700">
-            <strong>{estatisticas.goleira.nome}</strong> ({estatisticas.goleira.time})
+            <strong>{stats.goleira.nome}</strong>
           </p>
-          <span className="mt-2 text-lg font-semibold text-blue-800">
-            {estatisticas.goleira.defesas} defesas
-          </span>
+          <p className="text-red-600 font-semibold mt-2">
+            {stats.goleira.defesas} defesas
+          </p>
         </div>
       </div>
+
+      {/* Gráfico */}
+      <div className="bg-white rounded-xl shadow p-6">
+        <h2 className="text-lg font-bold mb-4">Resumo gráfico</h2>
+        <div style={{ width: "100%", height: 300 }}>
+          <ResponsiveContainer>
+            <BarChart data={chartData}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="value" fill="#7c3aed" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Modal de Detalhes */}
+      <Modal
+        isOpen={!!selected}
+        onClose={() => setSelected(null)}
+        title={selected?.tipo}
+      >
+        {selected && (
+          <div className="space-y-2 text-gray-700">
+            <p>
+              <strong>Nome:</strong> {selected.nome}
+            </p>
+            {selected.time && (
+              <p>
+                <strong>Time:</strong> {selected.time}
+              </p>
+            )}
+            {selected.gols !== undefined && (
+              <p>
+                <strong>Gols:</strong> {selected.gols}
+              </p>
+            )}
+            {selected.assistencias !== undefined && (
+              <p>
+                <strong>Assistências:</strong> {selected.assistencias}
+              </p>
+            )}
+            {selected.defesas !== undefined && (
+              <p>
+                <strong>Defesas:</strong> {selected.defesas}
+              </p>
+            )}
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
-
-export default Estatisticas;
