@@ -1,44 +1,39 @@
 // frontend/src/api.js
 const API_URL = "http://localhost:4000/api";
 
-// Função de login
+async function request(path, options = {}) {
+  const token = localStorage.getItem("token");
+  const headers = options.headers || {};
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+  headers["Content-Type"] = headers["Content-Type"] || "application/json";
+  const res = await fetch(`${API_URL}${path}`, { ...options, headers });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`${res.status} - ${text}`);
+  }
+  return res.json();
+}
+
 export async function login(username, password) {
-  const res = await fetch(`${API_URL}/login`, {
+  return request("/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
+    headers: { "Content-Type": "application/json" },
   });
-  return res.json();
 }
 
-// Jogadoras
-export async function getJogadoras(token) {
-  const res = await fetch(`${API_URL}/jogadoras`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res.json();
+export async function getJogadoras() {
+  return request("/jogadoras");
 }
 
-// Jogos
-export async function getJogos(token) {
-  const res = await fetch(`${API_URL}/jogos`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res.json();
+export async function getJogos() {
+  return request("/jogos");
 }
 
-// Classificação
-export async function getClassificacao(token) {
-  const res = await fetch(`${API_URL}/classificacao`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res.json();
+export async function getClassificacao() {
+  return request("/classificacao");
 }
 
-// Estatísticas
-export async function getEstatisticas(token) {
-  const res = await fetch(`${API_URL}/estatisticas`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res.json();
+export async function getEstatisticas() {
+  return request("/estatisticas");
 }
