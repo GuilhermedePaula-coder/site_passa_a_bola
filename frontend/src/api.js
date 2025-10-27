@@ -1,39 +1,40 @@
 // frontend/src/api.js
-const API_URL = "http://localhost:4000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api"; // use env se quiser
 
-async function request(path, options = {}) {
-  const token = localStorage.getItem("token");
-  const headers = options.headers || {};
-  if (token) headers["Authorization"] = `Bearer ${token}`;
-  headers["Content-Type"] = headers["Content-Type"] || "application/json";
-  const res = await fetch(`${API_URL}${path}`, { ...options, headers });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`${res.status} - ${text}`);
-  }
+// login existente...
+export async function login(username, password) {
+  const res = await fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
   return res.json();
 }
 
-export async function login(username, password) {
-  return request("/login", {
-    method: "POST",
-    body: JSON.stringify({ username, password }),
-    headers: { "Content-Type": "application/json" },
+// jogadoras, jogos, classificacao, estatisticas (existentes)...
+
+export async function getNoticias(token) {
+  const res = await fetch(`${API_URL}/noticias`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
+  return res.json();
 }
 
-export async function getJogadoras() {
-  return request("/jogadoras");
+export async function getCampeonatos(token) {
+  const res = await fetch(`${API_URL}/campeonatos`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  return res.json();
 }
 
-export async function getJogos() {
-  return request("/jogos");
-}
-
-export async function getClassificacao() {
-  return request("/classificacao");
-}
-
-export async function getEstatisticas() {
-  return request("/estatisticas");
+export async function createCampeonato(data, token) {
+  const res = await fetch(`${API_URL}/campeonatos`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+    body: JSON.stringify(data),
+  });
+  return res.json();
 }
