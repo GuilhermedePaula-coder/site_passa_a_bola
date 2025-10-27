@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "titulo": "Palmeiras confirma recuperação no Brasileirão Feminino",
+    "resumo": "Palmeiras venceu por 2x1 e subiu na tabela.",
+    "conteudo": "No último domingo, o Palmeiras... (texto completo da notícia)",
+    "data": "2025-09-12",
+    "imagem": "https://via.placeholder.com/800x400?text=Noticia+1"
+  },
+  {
+    "id": 2,
+    "titulo": "Final eletrizante no estádio central",
+    "resumo": "Uma partida decidida nos pênaltis.",
+    "conteudo": "A partida entre ... (texto completo)",
+    "data": "2025-09-08",
+    "imagem": "https://via.placeholder.com/800x400?text=Noticia+2"
+  }
+]
