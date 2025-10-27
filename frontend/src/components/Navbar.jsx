@@ -20,12 +20,16 @@ export default function Navbar() {
       </div>
 
       <nav className="hidden md:flex space-x-6 text-green-700 font-semibold">
-        <Link to="/" className="hover:text-purple-700">Home</Link>
-        <Link to="/jogos" className="hover:text-purple-700">Jogos</Link>
-        <Link to="/classificacao" className="hover:text-purple-700">Classificação</Link>
-        <Link to="/jogadoras" className="hover:text-purple-700">Jogadoras</Link>
-        <Link to="/estatisticas" className="hover:text-purple-700">Estatísticas</Link>
+  <Link to="/">Home</Link>
+  <Link to="/jogos">Jogos</Link>
+  <Link to="/classificacao">Classificação</Link>
+  <Link to="/jogadoras">Jogadoras</Link>
+  <Link to="/estatisticas">Estatísticas</Link>
+  <Link to="/campeonatos">Campeonatos</Link>
+  <Link to="/noticias">Notícias</Link>
+  <Link to="/sobre">Sobre</Link>
       </nav>
+
 
       <div className="ml-4 hidden md:block">
         {!token ? (
