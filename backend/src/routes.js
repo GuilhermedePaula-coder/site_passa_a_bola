@@ -8,8 +8,6 @@ import { getEstatisticas } from "./controllers/estatisticasController.js";
 import { authMiddleware } from "./middleware/auth.js";
 import { getNoticias } from "./controllers/noticiasController.js";
 import { getCampeonatos, addCampeonato } from "./controllers/campeonatosController.js";
-import { authMiddleware } from "./middleware/auth.js";
-
 const router = Router();
 
 // Login (público)
