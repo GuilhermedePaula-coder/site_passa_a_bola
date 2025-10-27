@@ -1,7 +1,7 @@
 // frontend/src/api.js
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api"; // use env se quiser
+const API_URL = "http://localhost:4000/api";
 
-// login existente...
+// ---- LOGIN ----
 export async function login(username, password) {
   const res = await fetch(`${API_URL}/login`, {
     method: "POST",
@@ -11,30 +11,60 @@ export async function login(username, password) {
   return res.json();
 }
 
-// jogadoras, jogos, classificacao, estatisticas (existentes)...
-
-export async function getNoticias(token) {
-  const res = await fetch(`${API_URL}/noticias`, {
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
+// ---- JOGADORAS ----
+export async function getJogadoras(token) {
+  const res = await fetch(`${API_URL}/jogadoras`, {
+    headers: { Authorization: `Bearer ${token}` },
   });
   return res.json();
 }
 
+// ---- JOGOS ----
+export async function getJogos(token) {
+  const res = await fetch(`${API_URL}/jogos`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
+
+// ---- CLASSIFICAÇÃO ----
+export async function getClassificacao(token) {
+  const res = await fetch(`${API_URL}/classificacao`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
+
+// ---- ESTATÍSTICAS ----
+export async function getEstatisticas(token) {
+  const res = await fetch(`${API_URL}/estatisticas`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
+
+// ---- NOTÍCIAS ----
+export async function getNoticias() {
+  const res = await fetch(`${API_URL}/noticias`);
+  return res.json();
+}
+
+// ---- CAMPEONATOS ----
 export async function getCampeonatos(token) {
   const res = await fetch(`${API_URL}/campeonatos`, {
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    headers: { Authorization: `Bearer ${token}` },
   });
   return res.json();
 }
 
-export async function createCampeonato(data, token) {
+export async function addCampeonato(token, campeonato) {
   const res = await fetch(`${API_URL}/campeonatos`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: token ? `Bearer ${token}` : "",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(campeonato),
   });
   return res.json();
 }
