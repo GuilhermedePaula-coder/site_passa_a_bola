@@ -50,24 +50,21 @@ function App() {
     <Router basename="/site_passa_a_bola">
       <div className="min-h-screen flex flex-col bg-white font-sans">
         {/* Header */}
-        <header className="bg-white border-b-4 border-purple-800 shadow-md">
+        <header className="bg-white border-b-4 border-purple-800">
           <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <img
-                src="/imagem.png"
-                alt="Passa a Bola"
-                className="w-14 h-14 rounded-full border-2 border-purple-800"
-              />
+            <div className="flex items-center space-x-2">
+              <img src="/imagem.png" alt="Passa a Bola" className="w-12 h-12" />
               <h1 className="text-3xl font-extrabold text-purple-800">
                 PASSA A BOLA
               </h1>
             </div>
 
-            {/* Menu dinâmico */}
+            {/* Menu */}
             <Navbar />
           </div>
         </header>
+
 
         {/* Conteúdo */}
         <main className="flex-1 p-6 bg-gray-50">
