@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  const navigate = useNavigate();
-
   return (
     <section
       className="relative h-[80vh] flex items-center justify-center bg-cover bg-center"
@@ -19,12 +18,12 @@ export default function Home() {
         <p className="mt-4 text-lg">
           Acompanhe jogos, classificações e estatísticas do Brasileirão Feminino 2025.
         </p>
-        <button
-          onClick={() => navigate("/jogos")}
+        <Link
+          to="/jogos"
           className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg"
         >
           Ver Jogos
-        </button>
+        </Link>
       </div>
     </section>
   );

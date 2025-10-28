@@ -47,7 +47,7 @@ function Navbar() {
 
 function App() {
   return (
-    <Router basename="/site_passa_a_bola">
+    <Router basename={import.meta.env.MODE === "production" ? "/site_passa_a_bola" : "/"}>
       <div className="min-h-screen flex flex-col bg-white font-sans">
         {/* Header */}
         <header className="bg-white border-b-4 border-purple-800">
@@ -64,7 +64,6 @@ function App() {
             <Navbar />
           </div>
         </header>
-
 
         {/* Conteúdo */}
         <main className="flex-1 p-6 bg-gray-50">

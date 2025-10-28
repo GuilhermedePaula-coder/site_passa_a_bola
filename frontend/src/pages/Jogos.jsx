@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { getJogos } from "../api";
 import Spinner from "../components/Spinner";
@@ -11,7 +10,15 @@ export default function Jogos() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    getJogos().then(setJogos).catch(() => setJogos([]));
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setJogos([]);
+      return;
+    }
+
+    getJogos(token)
+      .then((data) => setJogos(data.error ? [] : data))
+      .catch(() => setJogos([]));
   }, []);
 
   if (jogos === null)
@@ -36,7 +43,6 @@ export default function Jogos() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-purple-800">Jogos</h1>
         <div className="flex gap-3">
@@ -58,7 +64,6 @@ export default function Jogos() {
         </div>
       </div>
 
-      {/* Lista de Jogos */}
       <div className="grid gap-4">
         {filtered.map((j) => (
           <div
@@ -69,8 +74,7 @@ export default function Jogos() {
             <div className="flex justify-between items-center">
               <div>
                 <div className="text-lg font-bold">
-                  {j.time1} <span className="text-purple-600">vs</span>{" "}
-                  {j.time2}
+                  {j.time1} <span className="text-purple-600">vs</span> {j.time2}
                 </div>
                 <div className="text-sm text-gray-600">
                   {j.data} • {j.horario}
@@ -95,7 +99,6 @@ export default function Jogos() {
         )}
       </div>
 
-      {/* Modal de Detalhes do Jogo */}
       <Modal
         isOpen={!!selected}
         onClose={() => setSelected(null)}
