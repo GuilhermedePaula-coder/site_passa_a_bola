@@ -1,3 +1,4 @@
+// backend/src/controllers/jogosController.js
 import fs from "fs";
 import path from "path";
 
@@ -8,8 +9,9 @@ export const getJogos = (req, res) => {
   try {
     const raw = fs.readFileSync(dataPath);
     const jogos = JSON.parse(raw);
-    res.json(jogos);
+    return res.json(jogos);
   } catch (err) {
-    res.status(500).json({ error: "Erro ao carregar jogos" });
+    console.error("Erro ao carregar jogos:", err);
+    return res.status(500).json({ error: "Erro ao carregar jogos" });
   }
 };

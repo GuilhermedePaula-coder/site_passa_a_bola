@@ -7,10 +7,10 @@ export default function Estatisticas() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) return setEstatisticas([]);
+    if (!token) return;
 
     getEstatisticas(token)
-      .then((data) => setEstatisticas(data.error ? null : data))
+      .then((data) => setEstatisticas(data))
       .catch(() => setEstatisticas([]));
   }, []);
 
@@ -22,29 +22,20 @@ export default function Estatisticas() {
     );
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
-      <h1 className="text-3xl font-bold text-purple-800 mb-6 text-center">
-        Estatísticas — Brasileirão Feminino 2025
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-3xl font-bold text-purple-800 mb-6">
+        Estatísticas do Campeonato
       </h1>
-
-      <div className="space-y-6 text-gray-700">
-        <div className="p-4 border rounded-lg">
-          <h2 className="text-lg font-bold text-purple-700">Artilheira</h2>
-          <p>{estatisticas.artilheira?.nome} — {estatisticas.artilheira?.time}</p>
-          <p>Gols: {estatisticas.artilheira?.gols}</p>
-        </div>
-
-        <div className="p-4 border rounded-lg">
-          <h2 className="text-lg font-bold text-purple-700">Líder em Assistências</h2>
-          <p>{estatisticas.assistente?.nome} — {estatisticas.assistente?.time}</p>
-          <p>Assistências: {estatisticas.assistente?.assistencias}</p>
-        </div>
-
-        <div className="p-4 border rounded-lg">
-          <h2 className="text-lg font-bold text-purple-700">Melhor Goleira</h2>
-          <p>{estatisticas.goleira?.nome} — {estatisticas.goleira?.time}</p>
-          <p>Defesas: {estatisticas.goleira?.defesas}</p>
-        </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {estatisticas.map((e) => (
+          <div key={e.id} className="bg-white p-4 rounded-xl shadow">
+            <h2 className="text-xl font-semibold text-purple-700 mb-2">
+              {e.titulo}
+            </h2>
+            <p className="text-2xl font-bold text-green-700">{e.valor}</p>
+            <p className="text-sm text-gray-500 mt-2">{e.descricao}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

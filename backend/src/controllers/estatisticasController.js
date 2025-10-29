@@ -1,15 +1,30 @@
-import fs from "fs";
-import path from "path";
-
-const __dirname = path.resolve();
-const dataPath = path.join(__dirname, "src", "data", "estatisticas.json");
-
 export const getEstatisticas = (req, res) => {
-  try {
-    const raw = fs.readFileSync(dataPath);
-    const estatisticas = JSON.parse(raw);
-    res.json(estatisticas);
-  } catch (err) {
-    res.status(500).json({ error: "Erro ao carregar estatísticas" });
-  }
+  const estatisticas = [
+    {
+      id: 1,
+      jogadora: "Marta",
+      time: "Orlando Pride",
+      gols: 12,
+      assistencias: 8,
+      jogos: 15
+    },
+    {
+      id: 2,
+      jogadora: "Bia Zaneratto",
+      time: "Palmeiras",
+      gols: 10,
+      assistencias: 6,
+      jogos: 14
+    },
+    {
+      id: 3,
+      jogadora: "Ary Borges",
+      time: "Racing Louisville",
+      gols: 7,
+      assistencias: 5,
+      jogos: 12
+    }
+  ];
+
+  res.json(estatisticas);
 };

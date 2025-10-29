@@ -1,3 +1,4 @@
+// frontend/src/pages/Jogos.jsx
 import { useEffect, useState } from "react";
 import { getJogos } from "../api";
 import Spinner from "../components/Spinner";
@@ -8,17 +9,31 @@ export default function Jogos() {
   const [filter, setFilter] = useState("Todos");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
+      setError("Você precisa estar logado para visualizar os jogos.");
       setJogos([]);
       return;
     }
 
     getJogos(token)
-      .then((data) => setJogos(data.error ? [] : data))
-      .catch(() => setJogos([]));
+      .then((data) => {
+        if (data.error) {
+          console.error("Erro ao buscar jogos:", data.error);
+          setError("Erro ao carregar jogos. Verifique o token ou o backend.");
+          setJogos([]);
+        } else {
+          setJogos(data);
+        }
+      })
+      .catch((err) => {
+        console.error("Erro de conexão:", err);
+        setError("Falha na conexão com o servidor.");
+        setJogos([]);
+      });
   }, []);
 
   if (jogos === null)
@@ -43,6 +58,7 @@ export default function Jogos() {
 
   return (
     <div className="max-w-6xl mx-auto">
+      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-purple-800">Jogos</h1>
         <div className="flex gap-3">
@@ -64,6 +80,14 @@ export default function Jogos() {
         </div>
       </div>
 
+      {/* Mensagem de erro */}
+      {error && (
+        <div className="text-center bg-red-100 text-red-700 p-3 rounded mb-4">
+          {error}
+        </div>
+      )}
+
+      {/* Lista de Jogos */}
       <div className="grid gap-4">
         {filtered.map((j) => (
           <div
@@ -99,6 +123,7 @@ export default function Jogos() {
         )}
       </div>
 
+      {/* Modal de Detalhes do Jogo */}
       <Modal
         isOpen={!!selected}
         onClose={() => setSelected(null)}
