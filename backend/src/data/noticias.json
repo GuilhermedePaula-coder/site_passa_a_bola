@@ -1,18 +1,30 @@
 [
-  {
-    "id": 1,
-    "titulo": "Palmeiras confirma recuperação no Brasileirão Feminino",
-    "resumo": "Palmeiras venceu por 2x1 e subiu na tabela.",
-    "conteudo": "No último domingo, o Palmeiras... (texto completo da notícia)",
-    "data": "2025-09-12",
-    "imagem": "https://via.placeholder.com/800x400?text=Noticia+1"
-  },
-  {
-    "id": 2,
-    "titulo": "Final eletrizante no estádio central",
-    "resumo": "Uma partida decidida nos pênaltis.",
-    "conteudo": "A partida entre ... (texto completo)",
-    "data": "2025-09-08",
-    "imagem": "https://via.placeholder.com/800x400?text=Noticia+2"
-  }
+{
+"id": 1,
+"titulo": "Seleção Feminina faz história e conquista torneio internacional",
+"resumo": "O Brasil vence a final contra a França e se torna campeão de forma invicta. Marta é eleita a melhor jogadora do torneio.",
+"imagem": "[https://images.unsplash.com/photo-1603297631952-6e91efb9b9c3](https://images.unsplash.com/photo-1603297631952-6e91efb9b9c3)",
+"link": "[https://cbf.com.br/selecao-feminina/noticias](https://cbf.com.br/selecao-feminina/noticias)"
+},
+{
+"id": 2,
+"titulo": "A nova geração do futebol feminino brasileiro brilha na base",
+"resumo": "Com apenas 17 anos, as jogadoras da sub-20 mostram talento e garra no campeonato sul-americano, garantindo vaga para o mundial.",
+"imagem": "[https://images.unsplash.com/photo-1593341646944-baa9d4e8f34b](https://images.unsplash.com/photo-1593341646944-baa9d4e8f34b)",
+"link": "[https://www1.folha.uol.com.br/esporte/](https://www1.folha.uol.com.br/esporte/)"
+},
+{
+"id": 3,
+"titulo": "Clubes investem mais no futebol feminino em 2025",
+"resumo": "Times brasileiros ampliam o investimento em estrutura, treinamentos e categorias de base, impulsionando o crescimento do futebol feminino.",
+"imagem": "[https://images.unsplash.com/photo-1534422298391-e4f8c172dddb](https://images.unsplash.com/photo-1534422298391-e4f8c172dddb)",
+"link": "[https://ge.globo.com/futebol/futebol-feminino/](https://ge.globo.com/futebol/futebol-feminino/)"
+},
+{
+"id": 4,
+"titulo": "Cristiane marca golaço e lidera vitória emocionante no Brasileirão",
+"resumo": "A atacante do Flamengo decide o jogo com um gol antológico nos acréscimos, reacendendo a disputa pelo título nacional.",
+"imagem": "[https://images.unsplash.com/photo-1518081461904-9acb4452b05a](https://images.unsplash.com/photo-1518081461904-9acb4452b05a)",
+"link": "[https://www.terra.com.br/esportes/futebol/](https://www.terra.com.br/esportes/futebol/)"
+}
 ]
