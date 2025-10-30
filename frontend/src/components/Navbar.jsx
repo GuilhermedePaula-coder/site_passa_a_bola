@@ -1,10 +1,11 @@
-import { useState } from "react";
+// frontend/src/components/Header.jsx
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-export default function Navbar() {
+export default function Header() {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const token = localStorage.getItem("token");
+  const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -12,53 +13,64 @@ export default function Navbar() {
   };
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 bg-white shadow-sm border-b-2 border-purple-600">
-      {/*  Logo  */}
-      <div className="flex items-center space-x-3">
-        <img src="/image.png" alt="logo" className="h-10" />
-        <h1 className="text-2xl font-bold text-purple-700">PASSA A BOLA</h1>
-      </div>
+    <header className="fixed inset-x-0 top-0 z-40 bg-white/80 backdrop-blur shadow-sm border-b border-purple-100">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <img src={`${import.meta.env.BASE_URL}image.png`} alt="logo" className="w-12 h-12 object-contain" />
+          <div>
+            <div className="text-2xl font-extrabold text-purple-700">PASSA A BOLA</div>
+            <div className="text-xs text-gray-500">Futebol feminino — Brasileiro 2025</div>
+          </div>
+        </div>
 
-      <nav className="hidden md:flex space-x-6 text-green-700 font-semibold">
-  <Link to="/">Home</Link>
-  <Link to="/jogos">Jogos</Link>
-  <Link to="/classificacao">Classificação</Link>
-  <Link to="/jogadoras">Jogadoras</Link>
-  <Link to="/estatisticas">Estatísticas</Link>
-  <Link to="/campeonatos">Campeonatos</Link>
-  <Link to="/noticias">Notícias</Link>
-  <Link to="/sobre">Sobre</Link>
-      </nav>
+        <nav className="hidden md:flex items-center gap-6 text-green-700 font-semibold">
+          <Link to="/" className="hover:text-purple-700">Home</Link>
+          <Link to="/jogos" className="hover:text-purple-700">Jogos</Link>
+          <Link to="/classificacao" className="hover:text-purple-700">Classificação</Link>
+          <Link to="/jogadoras" className="hover:text-purple-700">Jogadoras</Link>
+          <Link to="/estatisticas" className="hover:text-purple-700">Estatísticas</Link>
+          <Link to="/campeonatos" className="hover:text-purple-700">Campeonatos</Link>
+          <Link to="/noticias" className="hover:text-purple-700">Notícias</Link>
+          <Link to="/sobre" className="hover:text-purple-700">Sobre</Link>
+        </nav>
 
-
-      <div className="ml-4 hidden md:block">
-        {!token ? (
-          <Link to="/login" className="text-purple-700 font-bold">Login</Link>
-        ) : (
-          <button onClick={handleLogout} className="text-red-600 font-bold">Logout</button>
-        )}
-      </div>
-
-      {/* Menu Mobile */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="md:hidden ml-4 p-2 rounded-md bg-purple-100"
-      >
-        ☰
-      </button>
-
-      {open && (
-        <div className="md:hidden absolute top-16 right-4 bg-white shadow-lg rounded-md p-4 w-48">
-          <Link to="/" onClick={() => setOpen(false)} className="block py-2">Home</Link>
-          <Link to="/jogos" onClick={() => setOpen(false)} className="block py-2">Jogos</Link>
-          <Link to="/classificacao" onClick={() => setOpen(false)} className="block py-2">Classificação</Link>
-          <Link to="/jogadoras" onClick={() => setOpen(false)} className="block py-2">Jogadoras</Link>
-          <Link to="/estatisticas" onClick={() => setOpen(false)} className="block py-2">Estatísticas</Link>
+        <div className="flex items-center gap-4">
           {!token ? (
-            <Link to="/login" onClick={() => setOpen(false)} className="block py-2 text-purple-700">Login</Link>
+            <Link to="/login" className="hidden md:inline text-purple-700 font-bold">Login</Link>
           ) : (
-            <button onClick={handleLogout} className="block py-2 text-red-600">Logout</button>
+            <button onClick={handleLogout} className="hidden md:inline text-red-600 font-bold">Logout</button>
           )}
+
+          {/* mobile menu button */}
+          <button
+            onClick={() => setOpen((s) => !s)}
+            className="md:hidden p-2 rounded bg-purple-50"
+            aria-label="menu"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      {/* mobile menu */}
+      {open && (
+        <div className="md:hidden bg-white border-t border-purple-50 shadow">
+          <div className="px-4 py-3 flex flex-col gap-2">
+            <Link to="/" onClick={() => setOpen(false)} className="py-1">Home</Link>
+            <Link to="/jogos" onClick={() => setOpen(false)} className="py-1">Jogos</Link>
+            <Link to="/classificacao" onClick={() => setOpen(false)} className="py-1">Classificação</Link>
+            <Link to="/jogadoras" onClick={() => setOpen(false)} className="py-1">Jogadoras</Link>
+            <Link to="/estatisticas" onClick={() => setOpen(false)} className="py-1">Estatísticas</Link>
+            <Link to="/campeonatos" onClick={() => setOpen(false)} className="py-1">Campeonatos</Link>
+            <Link to="/noticias" onClick={() => setOpen(false)} className="py-1">Notícias</Link>
+            <Link to="/sobre" onClick={() => setOpen(false)} className="py-1">Sobre</Link>
+
+            {!token ? (
+              <Link to="/login" onClick={() => setOpen(false)} className="py-2 text-purple-700 font-semibold">Login</Link>
+            ) : (
+              <button onClick={handleLogout} className="py-2 text-red-600 font-semibold text-left">Logout</button>
+            )}
+          </div>
         </div>
       )}
     </header>

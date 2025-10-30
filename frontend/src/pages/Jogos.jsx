@@ -14,135 +14,78 @@ export default function Jogos() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      setError("Você precisa estar logado para visualizar os jogos.");
+      setError("Faça login para ver os jogos.");
       setJogos([]);
       return;
     }
 
     getJogos(token)
       .then((data) => {
-        if (data.error) {
-          console.error("Erro ao buscar jogos:", data.error);
+        if (data && data.error) {
           setError("Erro ao carregar jogos. Verifique o token ou o backend.");
           setJogos([]);
         } else {
-          setJogos(data);
+          setJogos(data || []);
         }
       })
-      .catch((err) => {
-        console.error("Erro de conexão:", err);
-        setError("Falha na conexão com o servidor.");
+      .catch(() => {
+        setError("Erro de rede ao buscar jogos.");
         setJogos([]);
       });
   }, []);
 
-  if (jogos === null)
-    return (
-      <div className="text-center p-10">
-        <Spinner />
-      </div>
-    );
+  if (jogos === null) return <div className="p-10 text-center"><Spinner /></div>;
 
   const filtered = jogos.filter((j) => {
     if (filter !== "Todos" && j.status !== filter) return false;
-    if (
-      search &&
-      !(
-        j.time1.toLowerCase().includes(search.toLowerCase()) ||
-        j.time2.toLowerCase().includes(search.toLowerCase())
-      )
-    )
-      return false;
+    if (search && !(j.time1.toLowerCase().includes(search.toLowerCase()) || j.time2.toLowerCase().includes(search.toLowerCase()))) return false;
     return true;
   });
 
   return (
-    <div className="max-w-6xl mx-auto">
-      {/* Header */}
+    <div className="max-w-7xl mx-auto px-6 pt-8 pb-12">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-purple-800">Jogos</h1>
+
         <div className="flex gap-3">
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="px-3 py-2 rounded border"
-          >
+          <select value={filter} onChange={(e)=>setFilter(e.target.value)} className="px-3 py-2 rounded border">
             <option>Todos</option>
             <option>Finalizado</option>
             <option>Agendado</option>
           </select>
-          <input
-            placeholder="Buscar time..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="px-3 py-2 border rounded"
-          />
+          <input placeholder="Buscar time..." value={search} onChange={(e)=>setSearch(e.target.value)} className="px-3 py-2 border rounded" />
         </div>
       </div>
 
-      {/* Mensagem de erro */}
-      {error && (
-        <div className="text-center bg-red-100 text-red-700 p-3 rounded mb-4">
-          {error}
-        </div>
-      )}
+      {error && <div className="bg-red-100 text-red-800 p-3 rounded mb-6">{error}</div>}
 
-      {/* Lista de Jogos */}
-      <div className="grid gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         {filtered.map((j) => (
-          <div
-            key={j.id}
-            className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition cursor-pointer"
-            onClick={() => setSelected(j)}
-          >
+          <div key={j.id} className="bg-white p-4 rounded-xl shadow hover:shadow-lg cursor-pointer" onClick={()=>setSelected(j)}>
             <div className="flex justify-between items-center">
               <div>
-                <div className="text-lg font-bold">
-                  {j.time1} <span className="text-purple-600">vs</span> {j.time2}
-                </div>
-                <div className="text-sm text-gray-600">
-                  {j.data} • {j.horario}
-                </div>
+                <div className="text-lg font-bold">{j.time1} <span className="text-purple-600">vs</span> {j.time2}</div>
+                <div className="text-sm text-gray-500">{j.data} • {j.horario}</div>
               </div>
-              <div
-                className={`px-3 py-1 rounded-full font-semibold ${
-                  j.status === "Finalizado"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-yellow-100 text-yellow-800"
-                }`}
-              >
+              <div className={`px-3 py-1 rounded-full font-semibold ${j.status === "Finalizado" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}>
                 {j.status}
               </div>
             </div>
           </div>
         ))}
+
         {filtered.length === 0 && (
-          <div className="text-center p-6 bg-white rounded">
-            Nenhum jogo encontrado.
-          </div>
+          <div className="col-span-full text-center bg-white p-6 rounded">Nenhum jogo encontrado.</div>
         )}
       </div>
 
-      {/* Modal de Detalhes do Jogo */}
-      <Modal
-        isOpen={!!selected}
-        onClose={() => setSelected(null)}
-        title="Detalhes do Jogo"
-      >
+      <Modal isOpen={!!selected} onClose={()=>setSelected(null)} title="Detalhes do Jogo">
         {selected && (
-          <div className="space-y-2 text-gray-700">
-            <p>
-              <strong>Times:</strong> {selected.time1} vs {selected.time2}
-            </p>
-            <p>
-              <strong>Data:</strong> {selected.data}
-            </p>
-            <p>
-              <strong>Horário:</strong> {selected.horario}
-            </p>
-            <p>
-              <strong>Status:</strong> {selected.status}
-            </p>
+          <div className="space-y-2">
+            <p><strong>Times:</strong> {selected.time1} vs {selected.time2}</p>
+            <p><strong>Data:</strong> {selected.data}</p>
+            <p><strong>Horário:</strong> {selected.horario}</p>
+            <p><strong>Status:</strong> {selected.status}</p>
           </div>
         )}
       </Modal>
