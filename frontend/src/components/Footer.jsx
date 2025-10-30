@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="text-center">
           <p className="font-semibold">Siga nas redes</p>
           <div className="flex gap-3 justify-center mt-2">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="bg-white/10 px-3 py-2 rounded">Instagram</a>
+            <a href="https://www.instagram.com/passaabola/" target="_blank" rel="noreferrer" className="bg-white/10 px-3 py-2 rounded">Instagram</a>
             <a href="https://twitter.com" target="_blank" rel="noreferrer" className="bg-white/10 px-3 py-2 rounded">Twitter</a>
             <a href="https://facebook.com" target="_blank" rel="noreferrer" className="bg-white/10 px-3 py-2 rounded">YouTube</a>
           </div>

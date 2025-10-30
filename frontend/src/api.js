@@ -90,3 +90,27 @@ export async function addCampeonato(token, campeonato) {
   });
   return res.json();
 }
+// Atualiza um campeonato existente
+export async function updateCampeonato(token, id, campeonato) {
+  const res = await fetch(`${API_URL}/campeonatos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
+    body: JSON.stringify(campeonato),
+  });
+  return res.json();
+}
+
+// Exclui um campeonato
+export async function deleteCampeonato(token, id) {
+  const res = await fetch(`${API_URL}/campeonatos/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
+  });
+  return res.json();
+}
