@@ -18,12 +18,12 @@ router.get("/noticias", getNoticias);
 
 // ⚽ Campeonatos
 router.get("/campeonatos", getCampeonatos);
-router.post("/campeonatos", authMiddleware, addCampeonato);
+router.post("/campeonatos", authMiddleware, addCampeonato); // apenas quem estiver logado pode adicionar
 
-// 🔒 Rotas protegidas (requer token)
-router.get("/jogos", authMiddleware, getJogos);
-router.get("/classificacao", authMiddleware, getClassificacao);
-router.get("/jogadoras", authMiddleware, getJogadoras);
-router.get("/estatisticas", authMiddleware, getEstatisticas);
+// 🌍 Rotas públicas (para o site carregar normalmente)
+router.get("/jogos", getJogos);
+router.get("/classificacao", getClassificacao);
+router.get("/jogadoras", getJogadoras);
+router.get("/estatisticas", getEstatisticas);
 
 export default router;

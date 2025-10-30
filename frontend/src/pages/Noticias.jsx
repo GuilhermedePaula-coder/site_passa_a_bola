@@ -6,21 +6,21 @@ export default function Noticias() {
   const [noticias, setNoticias] = useState(null);
 
   useEffect(()=>{
-    getNoticias().then(d=>setNoticias(d || [])).catch(()=>setNoticias([]));
+    getNoticias().then(setNoticias).catch(()=>setNoticias([]));
   },[]);
 
-  if (noticias === null) return <div className="p-8">Carregando...</div>;
+  if (noticias === null) return <div className="p-8 text-center">Carregando...</div>;
 
   return (
     <div className="max-w-7xl mx-auto px-6 pt-8 pb-12">
       <h1 className="text-3xl font-bold text-purple-800 mb-6">Notícias</h1>
       <div className="grid md:grid-cols-3 gap-6">
-        {noticias.map((n)=>(
-          <article key={n.id} className="bg-white rounded p-4 shadow">
-            <h2 className="font-bold">{n.titulo}</h2>
-            <p className="text-sm text-gray-500">{n.data}</p>
-            <p className="mt-2 text-sm">{n.resumo || n.corpo?.slice(0,120)}</p>
-            <a className="text-purple-700 text-sm mt-2 inline-block">Ler mais →</a>
+        {noticias.map(n => (
+          <article key={n.id} className="bg-white rounded-lg p-4 shadow hover:shadow-lg transition">
+            {n.imagem && <img src={n.imagem} alt={n.titulo} className="w-full h-44 object-cover rounded mb-3" />}
+            <h3 className="font-semibold text-lg">{n.titulo}</h3>
+            <p className="text-sm text-gray-600 mt-2">{n.resumo}</p>
+            <a href={n.link || "#"} target="_blank" rel="noreferrer" className="text-green-700 font-semibold mt-3 inline-block">Leia mais →</a>
           </article>
         ))}
       </div>

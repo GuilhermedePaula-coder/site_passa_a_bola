@@ -15,65 +15,22 @@ import Sobre from "./pages/Sobre";
 import Login from "./pages/Login";
 
 export default function App() {
-  // usa BASE_URL do Vite para suportar subpastas (ex: /site_passa_a_bola/)
   const basename = import.meta.env.BASE_URL || "/";
 
   return (
     <Router basename={basename}>
-      <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-800">
+      <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 pt-28">
           <Routes>
             <Route path="/login" element={<Login />} />
 
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <Home />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/jogos"
-              element={
-                <PrivateRoute>
-                  <Jogos />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/classificacao"
-              element={
-                <PrivateRoute>
-                  <Classificacao />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/jogadoras"
-              element={
-                <PrivateRoute>
-                  <Jogadoras />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/estatisticas"
-              element={
-                <PrivateRoute>
-                  <Estatisticas />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/campeonatos"
-              element={
-                <PrivateRoute>
-                  <Campeonatos />
-                </PrivateRoute>
-              }
-            />
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/jogos" element={<PrivateRoute><Jogos /></PrivateRoute>} />
+            <Route path="/classificacao" element={<PrivateRoute><Classificacao /></PrivateRoute>} />
+            <Route path="/jogadoras" element={<PrivateRoute><Jogadoras /></PrivateRoute>} />
+            <Route path="/estatisticas" element={<PrivateRoute><Estatisticas /></PrivateRoute>} />
+            <Route path="/campeonatos" element={<PrivateRoute><Campeonatos /></PrivateRoute>} />
 
             {/* públicas */}
             <Route path="/noticias" element={<Noticias />} />

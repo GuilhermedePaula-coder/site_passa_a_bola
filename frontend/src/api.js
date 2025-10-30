@@ -1,5 +1,12 @@
-// frontend/src/api.js
+
 const API_URL = "http://localhost:4000/api";
+
+// helper: cria headers com token (se existir)
+function authHeaders(token) {
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
+}
 
 // ---- LOGIN ----
 export async function login(username, password) {
@@ -14,7 +21,10 @@ export async function login(username, password) {
 // ---- JOGADORAS ----
 export async function getJogadoras(token) {
   const res = await fetch(`${API_URL}/jogadoras`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
   });
   return res.json();
 }
@@ -22,7 +32,10 @@ export async function getJogadoras(token) {
 // ---- JOGOS ----
 export async function getJogos(token) {
   const res = await fetch(`${API_URL}/jogos`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
   });
   return res.json();
 }
@@ -30,7 +43,10 @@ export async function getJogos(token) {
 // ---- CLASSIFICAÇÃO ----
 export async function getClassificacao(token) {
   const res = await fetch(`${API_URL}/classificacao`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
   });
   return res.json();
 }
@@ -38,7 +54,10 @@ export async function getClassificacao(token) {
 // ---- ESTATÍSTICAS ----
 export async function getEstatisticas(token) {
   const res = await fetch(`${API_URL}/estatisticas`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
   });
   return res.json();
 }
@@ -52,7 +71,10 @@ export async function getNoticias() {
 // ---- CAMPEONATOS ----
 export async function getCampeonatos(token) {
   const res = await fetch(`${API_URL}/campeonatos`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(token),
+    },
   });
   return res.json();
 }
@@ -62,7 +84,7 @@ export async function addCampeonato(token, campeonato) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      ...authHeaders(token),
     },
     body: JSON.stringify(campeonato),
   });

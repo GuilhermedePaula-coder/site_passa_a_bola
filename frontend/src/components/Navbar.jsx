@@ -13,13 +13,17 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 bg-white/80 backdrop-blur shadow-sm border-b border-purple-100">
+    <header className="fixed inset-x-0 top-0 z-40 bg-white/85 backdrop-blur-md shadow border-b border-purple-100">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}image.png`} alt="logo" className="w-12 h-12 object-contain" />
+          <img
+            src={`${import.meta.env.BASE_URL}image.png`}
+            alt="logo"
+            className="w-12 h-12 object-contain"
+          />
           <div>
-            <div className="text-2xl font-extrabold text-purple-700">PASSA A BOLA</div>
-            <div className="text-xs text-gray-500">Futebol feminino — Brasileiro 2025</div>
+            <div className="text-xl font-extrabold text-purple-700">PASSA A BOLA</div>
+            <div className="text-xs text-gray-500">Brasileirão Feminino 2025</div>
           </div>
         </div>
 
@@ -41,7 +45,6 @@ export default function Header() {
             <button onClick={handleLogout} className="hidden md:inline text-red-600 font-bold">Logout</button>
           )}
 
-          {/* mobile menu button */}
           <button
             onClick={() => setOpen((s) => !s)}
             className="md:hidden p-2 rounded bg-purple-50"
@@ -52,7 +55,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* mobile menu */}
       {open && (
         <div className="md:hidden bg-white border-t border-purple-50 shadow">
           <div className="px-4 py-3 flex flex-col gap-2">
@@ -64,12 +66,13 @@ export default function Header() {
             <Link to="/campeonatos" onClick={() => setOpen(false)} className="py-1">Campeonatos</Link>
             <Link to="/noticias" onClick={() => setOpen(false)} className="py-1">Notícias</Link>
             <Link to="/sobre" onClick={() => setOpen(false)} className="py-1">Sobre</Link>
-
-            {!token ? (
-              <Link to="/login" onClick={() => setOpen(false)} className="py-2 text-purple-700 font-semibold">Login</Link>
-            ) : (
-              <button onClick={handleLogout} className="py-2 text-red-600 font-semibold text-left">Logout</button>
-            )}
+            <div className="pt-2">
+              {!token ? (
+                <Link to="/login" onClick={() => setOpen(false)} className="py-2 text-purple-700 font-semibold">Login</Link>
+              ) : (
+                <button onClick={handleLogout} className="py-2 text-red-600 font-semibold text-left">Logout</button>
+              )}
+            </div>
           </div>
         </div>
       )}

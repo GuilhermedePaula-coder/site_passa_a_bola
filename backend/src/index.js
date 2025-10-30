@@ -1,19 +1,25 @@
+// backend/src/index.js
 import express from "express";
 import cors from "cors";
-import routes from "./routes.js";
-import { errorHandler } from "./utils/errorHandler.js";
+import router from "./routes.js";
 
 const app = express();
+const PORT = 4000;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Rotas
-app.use("/api", routes);
+// ✅ Prefixo correto das rotas
+app.use("/api", router);
 
-// Middleware de erro
-app.use(errorHandler);
+// Teste rápido da API
+app.get("/", (req, res) => {
+  res.send("API Passa a Bola rodando com sucesso 🚀");
+});
 
-const PORT = 4000;
+// Inicializa o servidor
 app.listen(PORT, () => {
-  console.log(`✅ Backend rodando em http://localhost:${PORT}`);
+  console.log(`✅ Servidor rodando na porta ${PORT}`);
+  console.log(`👉 Acesse: http://localhost:${PORT}/api`);
 });
