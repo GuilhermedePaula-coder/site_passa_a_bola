@@ -6,5 +6,13 @@
     "numeroTimes": 16,
     "local": "Brasil - Nacional",
     "descricao": "Campeonato nacional com 16 equipes."
+  },
+  {
+    "id": 2,
+    "nome": "Copa Passa a bola",
+    "data": "2025-02-15",
+    "numeroTimes": 16,
+    "local": "Brasil - Nacional",
+    "descricao": ""
   }
 ]

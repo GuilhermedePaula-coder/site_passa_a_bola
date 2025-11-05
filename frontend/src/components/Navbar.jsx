@@ -1,4 +1,4 @@
-// frontend/src/components/Header.jsx
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -34,6 +34,7 @@ export default function Header() {
           <Link to="/jogadoras" className="hover:text-purple-700">Jogadoras</Link>
           <Link to="/estatisticas" className="hover:text-purple-700">Estatísticas</Link>
           <Link to="/campeonatos" className="hover:text-purple-700">Campeonatos</Link>
+          <Link to="/simulacao-iot" className="hover:text-purple-700">Simulação IoT</Link>
           <Link to="/noticias" className="hover:text-purple-700">Notícias</Link>
           <Link to="/sobre" className="hover:text-purple-700">Sobre</Link>
         </nav>
@@ -64,6 +65,7 @@ export default function Header() {
             <Link to="/jogadoras" onClick={() => setOpen(false)} className="py-1">Jogadoras</Link>
             <Link to="/estatisticas" onClick={() => setOpen(false)} className="py-1">Estatísticas</Link>
             <Link to="/campeonatos" onClick={() => setOpen(false)} className="py-1">Campeonatos</Link>
+            <Link to="/simulacao-iot" onClick={() => setOpen(false)} className="py-1">Simulação IoT</Link>
             <Link to="/noticias" onClick={() => setOpen(false)} className="py-1">Notícias</Link>
             <Link to="/sobre" onClick={() => setOpen(false)} className="py-1">Sobre</Link>
             <div className="pt-2">

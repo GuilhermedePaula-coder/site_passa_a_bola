@@ -13,6 +13,7 @@ import Campeonatos from "./pages/Campeonatos";
 import Noticias from "./pages/Noticias";
 import Sobre from "./pages/Sobre";
 import Login from "./pages/Login";
+import SimulacaoIoT from "./pages/SimulacaoIoT";
 
 export default function App() {
   const basename = import.meta.env.BASE_URL || "/";
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/jogadoras" element={<PrivateRoute><Jogadoras /></PrivateRoute>} />
             <Route path="/estatisticas" element={<PrivateRoute><Estatisticas /></PrivateRoute>} />
             <Route path="/campeonatos" element={<PrivateRoute><Campeonatos /></PrivateRoute>} />
+            <Route path="/simulacao-iot" element={<PrivateRoute><SimulacaoIoT /></PrivateRoute>} />
 
             {/* públicas */}
             <Route path="/noticias" element={<Noticias />} />

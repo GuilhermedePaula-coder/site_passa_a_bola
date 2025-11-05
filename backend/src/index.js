@@ -23,3 +23,13 @@ app.listen(PORT, () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
   console.log(`👉 Acesse: http://localhost:${PORT}/api`);
 });
+
+
+app.post("/api/eventos", (req, res) => {
+  const { jogoId, tipo, timestamp } = req.body;
+
+  console.log(`[IoT] Evento recebido: ${tipo} no jogo ${jogoId} às ${timestamp}`);
+
+ 
+  res.json({ success: true, message: "Evento IoT registrado com sucesso!" });
+});

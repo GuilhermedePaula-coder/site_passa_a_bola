@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="text-right text-sm">
           <p>© 2025 Passa a Bola</p>
-          <p className="opacity-80 mt-2">Feito por: ____________________</p>
+          
         </div>
       </div>
 

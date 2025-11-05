@@ -1,4 +1,3 @@
-
 const API_URL = "http://localhost:4000/api";
 
 // helper: cria headers com token (se existir)
@@ -90,7 +89,8 @@ export async function addCampeonato(token, campeonato) {
   });
   return res.json();
 }
-// Atualiza um campeonato existente
+
+// ---- ATUALIZAR CAMPEONATO ----
 export async function updateCampeonato(token, id, campeonato) {
   const res = await fetch(`${API_URL}/campeonatos/${id}`, {
     method: "PUT",
@@ -103,7 +103,7 @@ export async function updateCampeonato(token, id, campeonato) {
   return res.json();
 }
 
-// Exclui um campeonato
+// ---- EXCLUIR CAMPEONATO ----
 export async function deleteCampeonato(token, id) {
   const res = await fetch(`${API_URL}/campeonatos/${id}`, {
     method: "DELETE",
@@ -113,4 +113,21 @@ export async function deleteCampeonato(token, id) {
     },
   });
   return res.json();
+}
+
+// ---- SIMULAÇÃO IoT ----
+// Essa função simula o envio de eventos de um botão físico (IoT)
+// Em um cenário real, o árbitro apertaria o botão e o dispositivo
+// enviaria o evento automaticamente para o servidor via rede.
+export async function registrarEventoIoT(token, jogoId, tipo) {
+  console.log(`[Simulação IoT] Enviando evento: ${tipo} para jogo ID: ${jogoId}`);
+
+  // Simula um pequeno delay de rede
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  // Retorna um resultado de sucesso simulado
+  return {
+    success: true,
+    message: `Evento '${tipo}' registrado com sucesso para o jogo ${jogoId}.`,
+  };
 }
