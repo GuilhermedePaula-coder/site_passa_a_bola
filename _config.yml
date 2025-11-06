@@ -1,0 +1,10 @@
+exclude:
+  - node_modules
+  - frontend
+  - backend
+  - package.json
+  - package-lock.json
+  - README.md
+  - yarn.lock
+  - .gitignore
+  - .github
