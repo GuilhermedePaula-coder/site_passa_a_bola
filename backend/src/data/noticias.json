@@ -1,30 +1,44 @@
 [
-{
-"id": 1,
-"titulo": "Seleção Feminina faz história e conquista torneio internacional",
-"resumo": "O Brasil vence a final contra a França e se torna campeão de forma invicta. Marta é eleita a melhor jogadora do torneio.",
-"imagem": "[https://images.unsplash.com/photo-1603297631952-6e91efb9b9c3](https://images.unsplash.com/photo-1603297631952-6e91efb9b9c3)",
-"link": "[https://cbf.com.br/selecao-feminina/noticias](https://cbf.com.br/selecao-feminina/noticias)"
-},
-{
-"id": 2,
-"titulo": "A nova geração do futebol feminino brasileiro brilha na base",
-"resumo": "Com apenas 17 anos, as jogadoras da sub-20 mostram talento e garra no campeonato sul-americano, garantindo vaga para o mundial.",
-"imagem": "[https://images.unsplash.com/photo-1593341646944-baa9d4e8f34b](https://images.unsplash.com/photo-1593341646944-baa9d4e8f34b)",
-"link": "[https://www1.folha.uol.com.br/esporte/](https://www1.folha.uol.com.br/esporte/)"
-},
-{
-"id": 3,
-"titulo": "Clubes investem mais no futebol feminino em 2025",
-"resumo": "Times brasileiros ampliam o investimento em estrutura, treinamentos e categorias de base, impulsionando o crescimento do futebol feminino.",
-"imagem": "[https://images.unsplash.com/photo-1534422298391-e4f8c172dddb](https://images.unsplash.com/photo-1534422298391-e4f8c172dddb)",
-"link": "[https://ge.globo.com/futebol/futebol-feminino/](https://ge.globo.com/futebol/futebol-feminino/)"
-},
-{
-"id": 4,
-"titulo": "Cristiane marca golaço e lidera vitória emocionante no Brasileirão",
-"resumo": "A atacante do Flamengo decide o jogo com um gol antológico nos acréscimos, reacendendo a disputa pelo título nacional.",
-"imagem": "[https://images.unsplash.com/photo-1518081461904-9acb4452b05a](https://images.unsplash.com/photo-1518081461904-9acb4452b05a)",
-"link": "[https://www.terra.com.br/esportes/futebol/](https://www.terra.com.br/esportes/futebol/)"
-}
+  {
+    "id": 1,
+    "titulo": "Seleção Feminina faz história e conquista torneio internacional",
+    "resumo": "O Brasil vence a final contra a França e se torna campeão de forma invicta. Marta é eleita a melhor jogadora do torneio.",
+    "imagem": "https://images.unsplash.com/photo-1535506197904-e5c09c0e5619?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "link": "https://cbf.com.br/selecao-feminina/noticias"
+  },
+  {
+    "id": 2,
+    "titulo": "A nova geração do futebol feminino brasileiro brilha na base",
+    "resumo": "Com apenas 17 anos, as jogadoras da sub-20 mostram talento e garra no campeonato sul-americano, garantindo vaga para o mundial.",
+    "imagem": "https://images.unsplash.com/photo-1525088068454-ff2c453e50e9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "link": "https://www1.folha.uol.com.br/esporte/"
+  },
+  {
+    "id": 3,
+    "titulo": "Clubes investem mais no futebol feminino em 2025",
+    "resumo": "Times brasileiros ampliam o investimento em estrutura, treinamentos e categorias de base, impulsionando o crescimento do futebol feminino.",
+    "imagem": "https://images.unsplash.com/photo-1593672755342-741a7f868732?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "link": "https://ge.globo.com/futebol/futebol-feminino/"
+  },
+  {
+    "id": 4,
+    "titulo": "Cristiane marca golaço e lidera vitória emocionante no Brasileirão",
+    "resumo": "A atacante do Flamengo decide o jogo com um gol antológico nos acréscimos, reacendendo a disputa pelo título nacional.",
+    "imagem": "https://plus.unsplash.com/premium_photo-1706830553975-c8da0527dc3b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "link": "https://www.terra.com.br/esportes/futebol/"
+  },
+  {
+    "id": 5,
+    "titulo": "Torcida bate recorde em jogo do Brasileirão Feminino",
+    "resumo": "Mais de 45 mil torcedores comparecem ao estádio para apoiar suas equipes, estabelecendo o maior público da história do campeonato.",
+    "imagem": "https://images.unsplash.com/photo-1559930198-26e8d7f0a4f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "link": "https://www.uol.com.br/esporte/futebol/"
+  },
+  {
+    "id": 6,
+    "titulo": "Projeto social revela novas promessas do futebol feminino",
+    "resumo": "Iniciativa comunitária em São Paulo oferece treino e formação esportiva para meninas, descobrindo novos talentos e transformando vidas.",
+    "imagem": "https://plus.unsplash.com/premium_photo-1708715414287-ee89ed280998?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGZ1dGVib2wlMjBmZW1pbmlub3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    "link": "https://g1.globo.com/sp/sao-paulo/"
+  }
 ]

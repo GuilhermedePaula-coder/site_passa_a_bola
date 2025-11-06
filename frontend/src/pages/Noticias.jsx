@@ -1,4 +1,4 @@
-// frontend/src/pages/Noticias.jsx
+
 import { useEffect, useState } from "react";
 import { getNoticias } from "../api";
 
@@ -39,14 +39,10 @@ export default function Noticias() {
               {n.resumo}
             </p>
 
-            <a
-              href={n.link || "#"}
-              target="_blank"
-              rel="noreferrer"
-              className="text-green-700 font-semibold inline-block hover:text-green-800"
-            >
+            {/* Botão Leia Mais apenas estético */}
+            <span className="text-green-600 font-semibold opacity-70 cursor-default">
               Leia mais →
-            </a>
+            </span>
           </article>
         ))}
       </div>
