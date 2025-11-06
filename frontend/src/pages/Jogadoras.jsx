@@ -64,10 +64,10 @@ export default function Jogadoras() {
 
             {/* Imagem fixa */}
             <img
-              src="/image.png"
+              src="/image.png" />
               alt="Passa a Bola"
               className="w-full h-52 object-cover bg-purple-50"
-            />
+            /
 
             <div className="p-4">
               <h2 className="font-bold text-lg text-purple-700 mb-1">{j.nome}</h2>
